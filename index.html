@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADLAB</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated gradient background -->
+    <div class="gradient-background"></div>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Sidebar - Mobile & Desktop -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/><path d="M17.8 11.8 19 13"/><path d="M15 9h0"/><path d="M17.8 6.2 19 5"/><path d="m3 21 9-9"/><path d="M12.2 6.2 11 5"/></svg>
+                    </div>
+                    <div class="logo-text">
+                        <h2>CADLAB</h2>
+                        <p>Cadastro de Laboratorios</p>
+                    </div>
+                </div>
+                <button class="close-mobile-btn" id="closeMobileBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="sidebar-search">
+                <div class="search-input-wrapper">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <nav>
+                    <div class="nav-group">
+                        <button class="nav-item expandable" data-expandable="files">
+                            <div class="nav-item-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                                <span>incluir Labs</span>
+                            </div>
+                            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>   
+                    </div>
+
+                    <div class="nav-group">
+                        <button class="nav-item expandable" data-expandable="projects">
+                            <div class="nav-item-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                                <span>Agendar</span>
+                            </div>
+                            
+                            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="nav-group">
+                        <button class="nav-item expandable" data-expandable="learn">
+                            <div class="nav-item-content">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                                <span>Labs Disponiveis</span>
+                            </div>
+                            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                    </div>
+
+                    
+                </nav>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper" id="mainWrapper">
+        <header class="header">
+            <button class="menu-btn mobile-only" id="mobileMenuBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+            <button class="menu-btn desktop-only" id="sidebarToggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+            </button>
+            <h1 class="header-title">CAD LAB</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="tabs-header">
+                <div class="tabs-list">
+                    <button class="tab-btn active" data-tab="home">cadastrar lab</button>
+                    <button class="tab-btn"  data-tab="apps">Agendar  Lab</button>
+                    <button class="tab-btn" data-tab="files">Labs disponivel</button>
+                </div>
+                <div class="tabs-actions desktop-only">
+                    <button class="btn btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        Install App
+                    </button>
+                    <button class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        New Project
+                    </button>
+                </div>
+            </div>
+
+            <!-- Home Tab -->
+            <div class="tab-content active" id="home-tab">
+                <section class="hero-section">
+                    <div class="hero-card">
+                        <div class="hero-content">
+                            <span class="badge badge-premium">Controle</span>
+                            <h2 class="hero-title">Sua empresa mais organizada</h2>
+                            <p class="hero-description">Site para cadastrar e gerenciar salas de reunião</p>
+                            <div class="hero-actions">
+                                <!-- Adicionando funcionalidade aos botões -->
+                                <button class="btn btn-white" id="btnCadastrar">Cadastrar sala</button>
+                                <button class="btn btn-outline-white" id="btnAgendar">Agendar</button>
+                            </div>
+                        </div>
+                        <div class="hero-decoration desktop-only">
+                            <div class="rotating-circles">
+                                <div class="circle circle-1"></div>
+                                <div class="circle circle-2"></div>
+                                <div class="circle circle-3"></div>
+                                <div class="circle circle-4"></div>
+                                <div class="circle circle-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Adicionando seção de agendamentos -->
+                <section class="section" id="agendamentosSection" style="display: none;">
+                    <div class="section-header">
+                        <h2 class="section-title">Meus Agendamentos</h2>
+                    </div>
+                    <div class="agendamentos-list" id="agendamentosList">
+                        <!-- Agendamentos serão inseridos aqui dinamicamente -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Other tabs would be similar structure -->
+            <div class="tab-content" id="apps-tab">
+                <section class="hero-section">
+                    <div class="hero-card hero-apps">
+                        <div class="hero-content">
+                            <h2 class="hero-title">Agendar uma sala de reunião</h2>
+                            <p class="hero-description">De uma olhada nas salas disponiveis mais perto de vocês.</p>
+                        </div>
+                        <!-- Adicionando funcionalidade ao botão de agendar -->
+                        <button class="btn btn-white" id="btnAgendarApps">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            Agende o seu agora
+                        </button>
+                    </div>
+                </section>
+                
+                <!-- Adicionando seção de agendamentos na aba apps também -->
+                <section class="section" id="agendamentosSectionApps" style="display: none;">
+                    <div class="section-header">
+                        <h2 class="section-title">Meus Agendamentos</h2>
+                    </div>
+                    <div class="agendamentos-list" id="agendamentosListApps">
+                        <!-- Agendamentos serão inseridos aqui dinamicamente -->
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="files-tab">
+                <section class="hero-section">
+                    <div class="hero-card hero-files">
+                        <div class="hero-content">
+                            <h2 class="hero-title">Pesquise a sala de reunião mais perto de você.</h2>
+                        </div>
+                        <!-- Adicionando funcionalidade ao campo de pesquisa -->
+                        <input type="search" placeholder="Pesquisar salas..." class="search-input" id="searchSalas">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Algumas salas mais famosas</h2>
+                    </div>
+                    <!-- Adicionando id para facilitar a pesquisa -->
+                    <div class="grid grid-4" id="salasGrid">
+                        <div class="card app-card" data-nome="Palace Gardem" data-endereco="AV João Penha, 20" data-cidade="SP">
+                            <div class="card-header">
+                                <div class="app-icon violet">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Palace Gardem</h3>
+                                <p class="card-description">AV João Penha, 20</p>
+                                <p class="card-description">SP</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-description">20 pessoas</p>
+                            </div>
+                        </div>
+
+                        <div class="card app-card" data-nome="Sala Executiva" data-endereco="Rua das Flores, 100" data-cidade="RJ">
+                            <div class="card-header">
+                                <div class="app-icon violet">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Sala Executiva</h3>
+                                <p class="card-description">Rua das Flores, 100</p>
+                                <p class="card-description">RJ</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-description">15 pessoas</p>
+                            </div>
+                        </div>
+
+                        <div class="card app-card" data-nome="Centro de Conferências" data-endereco="Av Paulista, 1500" data-cidade="SP">
+                            <div class="card-header">
+                                <div class="app-icon violet">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Centro de Conferências</h3>
+                                <p class="card-description">Av Paulista, 1500</p>
+                                <p class="card-description">SP</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-description">50 pessoas</p>
+                            </div>
+                        </div>
+                        <div class="card app-card" data-nome="Lab Inovação" data-endereco="Rua Tech, 42" data-cidade="MG">
+                            <div class="card-header">
+                                <div class="app-icon violet">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Lab Inovação</h3>
+                                <p class="card-description">Rua Tech, 42</p>
+                                <p class="card-description">MG</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-description">30 pessoas</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="projects-tab">
+                <section class="hero-section">
+                    <div class="hero-card hero-projects">
+                        <div class="hero-content">
+                            <h2 class="hero-title">Project Management</h2>
+                            <p class="hero-description">Organize your creative work into projects and collaborate with your team.</p>
+                        </div>
+                        <button class="btn btn-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            New Project
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="learn-tab">
+                <section class="hero-section">
+                    <div class="hero-card hero-learn">
+                        <div class="hero-content">
+                            <h2 class="hero-title">Learn & Grow</h2>
+                            <p class="hero-description">Expand your creative skills with tutorials, courses, and resources.</p>
+                        </div>
+                        <button class="btn btn-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            Upgrade to Pro
+                        </button>
+                    </div>
+                </section>
+                <p class="placeholder-text">Learn content would go here...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Adicionando modais para cadastro e agendamento -->
+    <!-- Modal Cadastrar Sala -->
+    <div class="modal" id="modalCadastrar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Cadastrar Nova Sala</h2>
+                <button class="close-modal" id="closeCadastrar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <form class="modal-body" id="formCadastrar">
+                <div class="form-group">
+                    <label for="nomeSala">Nome da Sala</label>
+                    <input type="text" id="nomeSala" class="form-input" placeholder="Ex: Sala de Reunião A" required>
+                </div>
+                <div class="form-group">
+                    <label for="enderecoSala">Endereço</label>
+                    <input type="text" id="enderecoSala" class="form-input" placeholder="Ex: Av Paulista, 1000" required>
+                </div>
+                <div class="form-group">
+                    <label for="cidadeSala">Cidade</label>
+                    <input type="text" id="cidadeSala" class="form-input" placeholder="Ex: SP" required>
+                </div>
+                <div class="form-group">
+                    <label for="capacidadeSala">Capacidade (pessoas)</label>
+                    <input type="number" id="capacidadeSala" class="form-input" placeholder="Ex: 20" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelCadastrar">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Cadastrar Sala</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Agendar -->
+    <div class="modal" id="modalAgendar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Agendar Sala</h2>
+                <button class="close-modal" id="closeAgendar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <form class="modal-body" id="formAgendar">
+                <div class="form-group">
+                    <label for="salaSelect">Selecione a Sala</label>
+                    <select id="salaSelect" class="form-input" required>
+                        <option value="">Escolha uma sala...</option>
+                        <option value="Palace Gardem">Palace Gardem - SP</option>
+                        <option value="Sala Executiva">Sala Executiva - RJ</option>
+                        <option value="Centro de Conferências">Centro de Conferências - SP</option>
+                        <option value="Lab Inovação">Lab Inovação - MG</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dataAgendamento">Data</label>
+                    <input type="date" id="dataAgendamento" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="horaInicio">Hora de Início</label>
+                    <input type="time" id="horaInicio" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="horaFim">Hora de Término</label>
+                    <input type="time" id="horaFim" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="responsavel">Responsável</label>
+                    <input type="text" id="responsavel" class="form-input" placeholder="Seu nome" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelAgendar">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar Agendamento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
